@@ -120,8 +120,8 @@
   <ItemGroup>
     <Content Include="Content\jquery-1.12.3.min.js" />
     <Content Include="packages.config" />
-    <Content Include="Views\Layout\Master.cshtml" />
-    <Content Include="Views\Layout\Menu.cshtml" />
+    <Content Include="Views\Layouts\Master.cshtml" />
+    <Content Include="Views\Layouts\Menu.cshtml" />
     <Content Include="Views\Pages\Home.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

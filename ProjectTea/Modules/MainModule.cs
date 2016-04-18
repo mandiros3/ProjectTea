@@ -20,7 +20,8 @@ namespace ProjectTea.Modules
             //Routes
             Get["/"] = args =>
             {
-                return Response.AsJson(_trackRepository.GetAll());
+                var trackList = _trackRepository.GetAll();
+                return View["Views/Pages/Home", trackList];
             };
         }
 
