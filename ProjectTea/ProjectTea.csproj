@@ -123,6 +123,8 @@
     <Content Include="Views\Layouts\Master.cshtml" />
     <Content Include="Views\Layouts\Menu.cshtml" />
     <Content Include="Views\Pages\Home.cshtml" />
+    <Content Include="Views\Layouts\AddURL.cshtml" />
+    <Content Include="Views\Layouts\Track.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
