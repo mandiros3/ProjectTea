@@ -138,6 +138,7 @@
   <ItemGroup>
     <Compile Include="DataProviders\DataRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Models\Decade.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Mood.cs" />
     <Compile Include="Models\Track.cs" />

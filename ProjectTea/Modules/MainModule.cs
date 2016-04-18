@@ -23,6 +23,11 @@ namespace ProjectTea.Modules
                 var trackList = _trackRepository.GetAll();
                 return View["Views/Pages/Home", trackList];
             };
+
+            Get["/tracks/{id}"] = args =>
+            {
+                return "Item " + args.id;
+            };
         }
 
     }
