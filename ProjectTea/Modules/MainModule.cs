@@ -28,6 +28,19 @@ namespace ProjectTea.Modules
             {
                 return "Item " + args.id;
             };
+
+
+            //Sent URL view ajax
+            //Receive youtube url in Module
+            // 1.a --Save in Database, returun updated model
+            // 1.b Make API Call
+            // send data to model (view)
+            // Add additional tag: like genre, mood, comments
+            // Add to db which will at to list,
+            //Software done
+            // Test
+            //Fix bugs
+            // Refactor.
         }
 
     }

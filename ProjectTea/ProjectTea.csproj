@@ -118,8 +118,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\ico.png" />
     <Content Include="Content\jquery-1.12.3.min.js" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\app.js" />
     <Content Include="Views\Layouts\Master.cshtml" />
     <Content Include="Views\Layouts\Menu.cshtml" />
     <Content Include="Views\Pages\Home.cshtml" />
@@ -133,7 +135,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataProviders\DataRepository.cs" />
