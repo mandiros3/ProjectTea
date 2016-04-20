@@ -2,11 +2,23 @@
 using ProjectTea.Interfaces;
 using System;
 using System.Collections.Generic;
+using Npgsql;
+using Dapper;
 
 namespace ProjectTea.DataProviders
 {
     public class DataRepository : IRepository
     {
+        private const string connectionString = "Host=localhost;Username=postgres;Password=codeblocks3;Database=postgres";
+        public DataRepository()
+        {
+            using (var conn = new NpgsqlConnection(connectionString))
+            {
+                conn.Open();
+               //conn.Execute($"CREATE TABLE IF NOT EXISTS Tracks () ")
+
+            }
+        }
         public List<Track> GetAll()
         {
             var tracks = new List<Track>();
