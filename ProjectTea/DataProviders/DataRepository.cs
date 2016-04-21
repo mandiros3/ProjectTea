@@ -13,10 +13,19 @@ namespace ProjectTea.DataProviders
         public DataRepository()
         {
             using (var conn = new NpgsqlConnection(connectionString))
-            {
-                conn.Open();
-               //conn.Execute($"CREATE TABLE IF NOT EXISTS Tracks () ")
-
+            {//Todo: Instead of catching exception, check if table exists programmatically
+              //Have a DB configurator script what will auto-generate schemas, as long as db is setup.  
+                try
+                {
+                    conn.Open();
+                    conn.Execute(QueryStrings.CreateTableTracks());
+                }
+                catch (NpgsqlException ex)
+                {
+                    Console.WriteLine("Table already exists. Details:" +ex);
+                }                 
+                conn.Close();
+               
             }
         }
         public List<Track> GetAll()
@@ -27,8 +36,8 @@ namespace ProjectTea.DataProviders
             {
                 Id = 1,
                 Artist = "Rammstein",
-                Genre = "Industrial",
-                Mood = "Angry",
+                GenreId = 11,
+                MoodId = 3,
                 Title = "Ich Wil",
                 Year = 1995
             };
@@ -36,8 +45,8 @@ namespace ProjectTea.DataProviders
             {
                 Id = 2,
                 Artist = "Fela Kuti",
-                Genre = "Afro Beat",
-                Mood = "Revolutionary",
+                GenreId = 11,
+                MoodId = 1,
                 Title = "Water no get Enemy",
                 Year = 2000
             };
@@ -45,8 +54,8 @@ namespace ProjectTea.DataProviders
             {
                 Id = 3,
                 Artist = "Justin Bieber",
-                Genre = "Riddim",
-                Mood = "Sad",
+                GenreId = 4,
+                MoodId = 2,
                 Title = "Sorry",
                 Year = 2016
             };

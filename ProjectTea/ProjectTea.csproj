@@ -149,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataProviders\DataRepository.cs" />
+    <Compile Include="DataProviders\QueryStrings.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Models\Decade.cs" />
     <Compile Include="Models\Genre.cs" />
