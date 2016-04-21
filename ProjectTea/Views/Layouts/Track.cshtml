@@ -1,9 +1,28 @@
 ﻿<section class="well">
-    <p>Youtube video info preview here</p>
-    <input placeholder="mood"/>
-    <input placeholder="other info"/>
+    <p>Youtube video info preview here, enter additional info below</p>
+    <input placeholder="Mood Dropdown / Insert new mood button"/>
+    <input placeholder="Genre dropdown/ new button"/>
     <button class="btn btn-success">Add to list</button>
 
+    <h4>Form prototype here</h4>
+    <!--Form will be used to send and recieve data-->
+    <select>
+        <option value="volvo">Genre</option>
+        <option value="saab">Country</option>
+        <option value="mercedes">Mood</option>
+        <option value="audi">Audi</option>
+    </select>
+
+    <form method="post" action="/tracks/new">
+        <input placeholder="Title" />
+        <input placeholder="other info" />
+        <input placeholder="mood" />
+        <input placeholder="other info" />
+        <input placeholder="mood" />
+        <input placeholder="other info" />
+        <button class="btn btn-success">Insert Track</button>
+
+    </form>
 
 
 
