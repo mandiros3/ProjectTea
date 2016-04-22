@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Npgsql;
 using Dapper;
+using Dapper.Contrib;
 
 namespace ProjectTea.DataProviders
 {
@@ -64,6 +65,30 @@ namespace ProjectTea.DataProviders
             tracks.Add(track2);
             tracks.Add(track3);
             return tracks;
+        }
+
+        public Track Insert (Track track)
+        {
+            if(track == null)
+            {
+                return null;
+            }
+            using (var conn = new NpgsqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    var trackId = conn.Insert(track);
+                }
+                catch (NpgsqlException ex)
+                {
+                    Console.WriteLine("Cannot Insert data. Details:" + ex);
+                }
+                conn.Close();
+
+            }
+
+            return track;
         }
     }
 }
