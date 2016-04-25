@@ -2,9 +2,10 @@
 using ProjectTea.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Npgsql;
 using Dapper;
-using Dapper.Contrib;
+using Dapper.Contrib.Extensions;
 
 namespace ProjectTea.DataProviders
 {
@@ -12,7 +13,7 @@ namespace ProjectTea.DataProviders
     {
         private const string connectionString = "Host=localhost;Username=postgres;Password=codeblocks3;Database=postgres";
         public DataRepository()
-        {
+        {/*
             using (var conn = new NpgsqlConnection(connectionString))
             {//Todo: Instead of catching exception, check if table exists programmatically
               //Have a DB configurator script what will auto-generate schemas, as long as db is setup.  
@@ -26,69 +27,46 @@ namespace ProjectTea.DataProviders
                     Console.WriteLine("Table already exists. Details:" +ex);
                 }                 
                 conn.Close();
-               
+             
             }
+             */
         }
         public List<Track> GetAll()
         {
-            var tracks = new List<Track>();
-
-            Track track = new Track
+           
+            using (var conn = new NpgsqlConnection(connectionString))
             {
-                Id = 1,
-                Artist = "Rammstein",
-                GenreId = 11,
-                MoodId = 3,
-                Title = "Ich Wil",
-                Year = 1995
-            };
-            Track track2 = new Track
-            {
-                Id = 2,
-                Artist = "Fela Kuti",
-                GenreId = 11,
-                MoodId = 1,
-                Title = "Water no get Enemy",
-                Year = 2000
-            };
-            Track track3 = new Track
-            {
-                Id = 3,
-                Artist = "Justin Bieber",
-                GenreId = 4,
-                MoodId = 2,
-                Title = "Sorry",
-                Year = 2016
-            };
-
-            tracks.Add(track);
-            tracks.Add(track2);
-            tracks.Add(track3);
-            return tracks;
+                conn.Open();
+                var alltracks = conn.GetAll<Track>().ToList();
+                return alltracks;
+            }
+            
         }
 
-        public Track Insert (Track track)
+        public Track Create (Track track)
         {
             if(track == null)
             {
                 return null;
             }
+            //No need to close the sql, using will dispose of the object automatically at the end.
             using (var conn = new NpgsqlConnection(connectionString))
             {
                 try
                 {
                     conn.Open();
+
+                    //That's because Insert returns an Id on success
                     var trackId = conn.Insert(track);
+                    track.Id = (int) trackId;
                 }
                 catch (NpgsqlException ex)
                 {
                     Console.WriteLine("Cannot Insert data. Details:" + ex);
                 }
-                conn.Close();
-
             }
 
-            return track;
+            return track.Id > 0 ? track : null;
         }
     }
 }

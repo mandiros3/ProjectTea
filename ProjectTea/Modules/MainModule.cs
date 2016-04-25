@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Nancy;
+using Nancy.ModelBinding;
 using ProjectTea.Interfaces;
 using ProjectTea.Models;
 
@@ -28,6 +29,17 @@ namespace ProjectTea.Modules
             {
                 return "Item " + args.id;
             };
+
+            Post["/tracks"] = args =>
+            {
+                var newTrack = this.Bind<Track>();
+                var createdTrack = _trackRepository.Create(newTrack);
+
+                return createdTrack != null ? Response.AsJson(createdTrack, HttpStatusCode.Created) : HttpStatusCode.InternalServerError;
+                
+            };
+
+
 
 
             //Sent URL view ajax

@@ -13,7 +13,7 @@
     <button class="btn btn-warning">Mood</button>
     <button class="btn btn-success">Decade</button>
     <button class="btn btn-primary">All</button>
-    <form action="/track" method="get">
+    <form action="/track/" method="get">
         <input id="id" name="id" />
         <button type="submit">Search</button>
     </form>
@@ -24,7 +24,7 @@
     {
         <section class="well">
             <h3>You have nothing here! Please Add new Track</h3>
-            <a href="/track/new"> New Track</a>
+            <a href="/track"> New Track</a>
         </section>
     }
     else
@@ -45,7 +45,7 @@
 <article class="col-sm-4">
     @Html.Partial("Views/Layouts/AddURL.cshtml")
     <br/>
-    @Html.Partial("Views/Layouts/Track.cshtml")
+   <!-- @Html.Partial("Views/Layouts/Track.cshtml")-->
 </article>
     <script type="text/javascript">
 

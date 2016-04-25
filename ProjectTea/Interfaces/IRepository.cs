@@ -10,7 +10,7 @@ namespace ProjectTea.Interfaces
     public interface IRepository
     {
         List<Track> GetAll();
-        Track Insert(Track track);
+        Track Create(Track track);
         /*
         Track Get(int id);
         
