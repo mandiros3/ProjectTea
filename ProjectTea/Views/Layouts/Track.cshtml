@@ -1,27 +1,21 @@
 ﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<ProjectTea.Models.Track>
 <section class="well">
     <p>Youtube video info preview here, enter additional info below</p>
-    <input placeholder="Mood Dropdown / Insert new mood button"/>
-    <input placeholder="Genre dropdown/ new button"/>
+    <input placeholder="Mood Dropdown / Insert new mood button" />
+    <input placeholder="Genre dropdown/ new button" />
     <button class="btn btn-success">Add to list</button>
 
     <h4>Form prototype here</h4>
-    <!--Form will be used to send and recieve data-->
-    <select>
-        <option value="volvo">Genre</option>
-        <option value="saab">Country</option>
-        <option value="mercedes">Mood</option>
-        <option value="audi">Audi</option>
-    </select>
+
 
     <form method="POST" action="/tracks">
-        <input placeholder="Title" name="title" value="@Model.Title"/>
-        <input placeholder="Artist" name="artist" value="@Model.Artist"/>
-        <input placeholder="GenreId" name="genreId" value="@Model.GenreId"/>
-        <input placeholder="Year" name="year" value="@Model.Year"/>
-        <input placeholder="MoodId" name="moodId" value="@Model.MoodId"/>
-       
-        <button class="btn btn-success" type ="submit">Insert Track</button>
+        <input placeholder="Title" name="title" />
+        <input placeholder="Artist" name="artist" />
+        <input placeholder="GenreId" name="genreId" />
+        <input placeholder="Year" name="year" />
+        <input placeholder="MoodId" name="moodId" />
+
+        <button class="btn btn-success" type="submit">Insert Track</button>
 
     </form>
 
