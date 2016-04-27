@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Dapper;
+using ProjectTea.Models;
 
 namespace ProjectTea.DataProviders
 {
@@ -24,9 +22,9 @@ namespace ProjectTea.DataProviders
             return query;
         }
 
-        public static string InsertTrack()
+        public static string InsertTrack(Track track)
         {
-            var query = @"INSERT INTO";
+            var query = @"INSERT INTO tracks (title, artist, genreid, year, moodid) VALUES (@Title, @Artist, @GenreId, @Year, @MoodId) RETURNING Id;";
             return query;
         }
 

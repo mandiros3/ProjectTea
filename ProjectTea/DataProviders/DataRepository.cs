@@ -56,9 +56,12 @@ namespace ProjectTea.DataProviders
                 {
                     conn.Open();
 
-                    //That's because Insert returns an Id on success
-                    var trackId = conn.Insert(track);
-                    track.Id = (int) trackId;
+                    //That's because Insert returns an Id on success, since it's a collection, i return the first element
+                    // once it work, delegate string to QueryStrings class
+                    int trackId = conn.Query(@"INSERT INTO tracks(title, artist, genreid, year, moodid) VALUES(@Title, @Artist, @GenreId, @Year, @MoodId) RETURNING Id; ", track).First();
+                    track.Id = trackId;
+                   
+
                 }
                 catch (NpgsqlException ex)
                 {
@@ -66,7 +69,7 @@ namespace ProjectTea.DataProviders
                 }
             }
 
-            return track.Id > 0 ? track : null;
+            return track.Id != 0 ? track : null;
         }
     }
 }
