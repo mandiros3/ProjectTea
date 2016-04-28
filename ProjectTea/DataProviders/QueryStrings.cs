@@ -22,7 +22,7 @@ namespace ProjectTea.DataProviders
             return query;
         }
 
-        public static string InsertTrack(Track track)
+        public static string InsertTrack()
         {
             var query = @"INSERT INTO tracks (title, artist, genreid, year, moodid) VALUES (@Title, @Artist, @GenreId, @Year, @MoodId) RETURNING Id;";
             return query;

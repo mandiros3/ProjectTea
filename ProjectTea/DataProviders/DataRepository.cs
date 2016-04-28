@@ -3,6 +3,7 @@ using ProjectTea.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Services;
 using Npgsql;
 using Dapper;
 using Dapper.Contrib.Extensions;
@@ -54,22 +55,19 @@ namespace ProjectTea.DataProviders
             {
                 try
                 {
+                    //DRY, for open() and close()
                     conn.Open();
 
-                    //That's because Insert returns an Id on success, since it's a collection, i return the first element
-                    // once it work, delegate string to QueryStrings class
-                    int trackId = conn.Query(@"INSERT INTO tracks(title, artist, genreid, year, moodid) VALUES(@Title, @Artist, @GenreId, @Year, @MoodId) RETURNING Id; ", track).First();
+                   //
+                    var trackId = conn.Query<int>(QueryStrings.InsertTrack(), track).Single();
                     track.Id = trackId;
-                   
-
                 }
                 catch (NpgsqlException ex)
                 {
                     Console.WriteLine("Cannot Insert data. Details:" + ex);
                 }
             }
-
-            return track.Id != 0 ? track : null;
+            return  track.Id > 0 ? track : null;
         }
     }
 }
