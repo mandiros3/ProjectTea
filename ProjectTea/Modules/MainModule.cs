@@ -11,10 +11,10 @@ namespace ProjectTea.Modules
 {
     public class MainModule : NancyModule
     {
-        private readonly IRepository _trackRepository;
+        private readonly ITrackRepository _trackRepository;
         
         //Todo Refactor Later
-        public MainModule( IRepository trackRepository)
+        public MainModule( ITrackRepository trackRepository)
         {
             _trackRepository = trackRepository;
 
@@ -38,9 +38,6 @@ namespace ProjectTea.Modules
                 return createdTrack != null ? Response.AsJson(createdTrack, HttpStatusCode.Created) : HttpStatusCode.InternalServerError;
                 
             };
-
-
-
 
             //Sent URL view ajax
             //Receive youtube url in Module

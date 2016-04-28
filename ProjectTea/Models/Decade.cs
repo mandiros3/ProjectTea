@@ -2,7 +2,8 @@
 {
     public class Decade
     {
-        public int iD { get; set; }
+        public int Id { get; set; }
         public int decade { get; set; }
+        public string decadeDescription { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using ProjectTea.Models;
 
 namespace ProjectTea.Interfaces
 {
-    public interface IRepository
+    public interface ITrackRepository
     {
         List<Track> GetAll();
         Track Create(Track track);

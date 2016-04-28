@@ -10,10 +10,10 @@ using Dapper.Contrib.Extensions;
 
 namespace ProjectTea.DataProviders
 {
-    public class DataRepository : IRepository
+    public class TrackRepository : ITrackRepository
     {
         private const string connectionString = "Host=localhost;Username=postgres;Password=codeblocks3;Database=postgres";
-        public DataRepository()
+        public TrackRepository()
         {/*
             using (var conn = new NpgsqlConnection(connectionString))
             {//Todo: Instead of catching exception, check if table exists programmatically
@@ -46,6 +46,7 @@ namespace ProjectTea.DataProviders
 
         public Track Create (Track track)
         {
+            
             if(track == null)
             {
                 return null;
@@ -57,8 +58,7 @@ namespace ProjectTea.DataProviders
                 {
                     //DRY, for open() and close()
                     conn.Open();
-
-                   //
+                   //Expecting only a single int row identity, we need the id, for the model to be complete.
                     var trackId = conn.Query<int>(QueryStrings.InsertTrack(), track).Single();
                     track.Id = trackId;
                 }
@@ -69,5 +69,7 @@ namespace ProjectTea.DataProviders
             }
             return  track.Id > 0 ? track : null;
         }
+
+
     }
 }

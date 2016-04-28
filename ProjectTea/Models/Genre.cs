@@ -7,8 +7,9 @@ namespace ProjectTea.Models
 {
     public class Genre
     {
-        public  int GenreID { get; set; }
-        public string GenreName { get; set; }
-        public string GenreDescription { get; set; }
+        
+        public  int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 }
