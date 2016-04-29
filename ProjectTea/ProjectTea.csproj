@@ -157,7 +157,6 @@
     <Compile Include="DataProviders\QueryStrings.cs" />
     <Compile Include="Interfaces\IGenreRepository.cs" />
     <Compile Include="Interfaces\ITrackRepository.cs" />
-    <Compile Include="Models\Decade.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Mood.cs" />
     <Compile Include="Models\Track.cs" />
