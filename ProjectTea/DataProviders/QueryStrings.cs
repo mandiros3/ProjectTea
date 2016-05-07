@@ -9,7 +9,8 @@ namespace ProjectTea.DataProviders
 
         public static string CreateTableTracks()
         {
-            var query = @"CREATE TABLE Tracks (
+
+            return @"CREATE TABLE IF NOT EXISTS Tracks (
                  Id serial PRIMARY KEY,
                  Title varchar(50) NOT NULL,
                  Artist varchar(50) NOT NULL,
@@ -18,14 +19,26 @@ namespace ProjectTea.DataProviders
                  MoodId integer,
                  dateCreated timestamp DEFAULT current_timestamp
                 );";
+        }
 
-            return query;
+        public static string CreateTableGenre()
+        {
+
+            return @"CREATE TABLE IF NOT EXISTS Genres(
+                          Id serial PRIMARY KEY,
+                          Name varchar(50) NOT NULL,
+                          Description varchar (500) NOT NULL);";
+
         }
 
         public static string InsertTrack()
         {
-            var query = @"INSERT INTO tracks (title, artist, genreid, year, moodid) VALUES (@Title, @Artist, @GenreId, @Year, @MoodId) RETURNING Id;";
-            return query;
+            return @"INSERT INTO tracks (title, artist, genreid, year, moodid) VALUES (@Title, @Artist, @GenreId, @Year, @MoodId) RETURNING Id;";
+        }
+
+        public static string InsertGenre()
+        {
+            return @"INSERT INTO genres (name, description) VALUES (@Name, @Description) RETURNING Id";
         }
 
 

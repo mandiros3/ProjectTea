@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Nancy;
+using Nancy.ModelBinding;
 using ProjectTea.Interfaces;
+using ProjectTea.Models;
 
 namespace ProjectTea.Modules
 {
@@ -24,6 +26,13 @@ namespace ProjectTea.Modules
               var genreList =  _genreRepository.GetAll();
 
                 return Response.AsJson(genreList);
+            };
+
+            Post["/tracks"] = args =>
+            {
+                var newGenre = this.Bind<Genre>();
+                var createdGenre = _genreRepository.Create(newGenre);
+                return createdGenre != null ? Response.AsJson(createdGenre, HttpStatusCode.Created) : HttpStatusCode.InternalServerError;
             };
 
         }
