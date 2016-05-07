@@ -14,7 +14,7 @@ namespace ProjectTea.DataProviders
     {
         private const string connectionString = "Host=localhost;Username=postgres;Password=codeblocks3;Database=postgres";
         public TrackRepository()
-        {/*
+        {
             using (var conn = new NpgsqlConnection(connectionString))
             {//Todo: Instead of catching exception, check if table exists programmatically
               //Have a DB configurator script what will auto-generate schemas, as long as db is setup.  
@@ -30,7 +30,7 @@ namespace ProjectTea.DataProviders
                 conn.Close();
              
             }
-             */
+             
         }
         public List<Track> GetAll()
         {
