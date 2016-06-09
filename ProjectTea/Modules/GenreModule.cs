@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Nancy;
+using ProjectTea.DataProviders;
 using ProjectTea.Interfaces;
 
 namespace ProjectTea.Modules
 {
     public class GenreModule : NancyModule
     {
-        private readonly IGenreRepository _genreRepository;
+
+        //Leave initialization just to be explicit
+        private readonly IGenreRepository _genreRepository = new GenreRepository();
+
+        //Pass genreRepository as argument, to make it easier for testing.
         public GenreModule(IGenreRepository genreRepository)
         {
             _genreRepository = genreRepository;

@@ -14,13 +14,9 @@ namespace ProjectTea.DataProviders
               new Genre {Name = "Disco"},
               new Genre {Name = "Jazz"},
               new Genre {Name = "Rock"},
-          new Genre { Name = "Psychedelic Rock" },
+              new Genre { Name = "Psychedelic Rock" },
           };
-
-
     return genres;        
 }
-
-
     }
 }
