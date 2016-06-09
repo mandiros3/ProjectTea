@@ -15,13 +15,10 @@ namespace ProjectTea.Modules
         public DecadeModule(IDecadeRepository _decadeRepository)
         {
             decadeRepository = _decadeRepository;
-
-
             //Routes
             Get["/decade"] = args =>
             {
                 var decadeList = decadeRepository.GetAll();
-
                 return Response.AsJson(decadeList);
             };
 

@@ -23,8 +23,6 @@ namespace ProjectTea.Modules
 
                 return Response.AsJson(moodList);
             };
-
-
         }
     }
 }

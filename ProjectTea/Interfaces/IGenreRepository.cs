@@ -10,7 +10,7 @@ namespace ProjectTea.Interfaces
     public interface IGenreRepository
     {
         List<Genre> GetAll();
-       // Track Create(Track track);
+        Genre Create(Genre genre);
         /*
         Track Get(int id);
         
