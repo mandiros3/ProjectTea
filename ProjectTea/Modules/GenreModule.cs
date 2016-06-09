@@ -12,7 +12,6 @@ namespace ProjectTea.Modules
 {
     public class GenreModule : NancyModule
     {
-
         //Leave initialization just to be explicit
         private readonly IGenreRepository _genreRepository = new GenreRepository();
 
