@@ -9,11 +9,11 @@ namespace ProjectTea.Interfaces
     public interface IDecadeRepository
     {
         List<Decade> GetAll();
+      
+        Decade Get(int id);
         /*
-        Track Get(int id);
-        
-        Task<Track> Update(Track track);
-        bool Delete(int id);
-        */
+      Task<Decade> Update(Decade decade);
+      bool Delete(int id);
+      */
     }
 }

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿
 using Nancy;
 using ProjectTea.DataProviders;
 using ProjectTea.Interfaces;
+using ProjectTea.Models;
 
 namespace ProjectTea.Modules
 {
@@ -20,6 +18,13 @@ namespace ProjectTea.Modules
             {
                 var decadeList = decadeRepository.GetAll();
                 return Response.AsJson(decadeList);
+            };
+
+            Get["/decade/{id:int}"] = args =>
+            {
+                Decade decade= decadeRepository.Get(args.id);
+                return decade != null ? Response.AsJson(decade) : HttpStatusCode.NotFound;
+
             };
 
         }

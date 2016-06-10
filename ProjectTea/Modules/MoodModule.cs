@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.EnterpriseServices;
-using System.Linq;
-using System.Web;
+﻿
 using Nancy;
 using ProjectTea.DataProviders;
 using ProjectTea.Interfaces;
+using ProjectTea.Models;
 
 namespace ProjectTea.Modules
 {
@@ -22,6 +19,13 @@ namespace ProjectTea.Modules
                 var moodList = moodRepository.GetAll();
 
                 return Response.AsJson(moodList);
+            };
+
+            Get["/mood/{id:int}"] = args =>
+            {
+                Mood mood = moodRepository.Get(args.id);
+                return mood != null ? Response.AsJson(mood) : HttpStatusCode.NotFound;
+
             };
         }
     }

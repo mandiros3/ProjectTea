@@ -17,8 +17,7 @@ namespace ProjectTea.DataProviders
         public GenreRepository()
         {
             using (var conn = new NpgsqlConnection(connectionString))
-            {//Todo: Instead of catching exception, check if table exists programmatically
-             // TODO: Have a DB configurator script what will auto-generate schemas, as long as db is setup.  
+            {
                 try
                 {
                     conn.Open();
@@ -48,6 +47,7 @@ namespace ProjectTea.DataProviders
             {
                 return null;
             }
+
             //No need to close the sql, using will dispose of the object automatically at the end.
             using (var conn = new NpgsqlConnection(connectionString))
             {
@@ -66,7 +66,5 @@ namespace ProjectTea.DataProviders
             }
             return genre.Id > 0 ? genre : null;
         }
-
-
     }
 }

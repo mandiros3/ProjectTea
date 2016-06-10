@@ -1,8 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
-using System.Web;
+using Dapper;
+using Dapper.Contrib.Extensions;
+using Npgsql;
+using ProjectTea.DataProviders;
 using ProjectTea.Models;
 using ProjectTea.Interfaces;
 
@@ -10,16 +13,50 @@ namespace ProjectTea.DataProviders
 {
     public class DecadeRepository : IDecadeRepository
     {
+
+        private const string connectionString = "Host=localhost;Username=postgres;Password=codeblocks3;Database=postgres";
+
+        public DecadeRepository()
+        {
+            using (var conn = new NpgsqlConnection(connectionString))
+            {//Todo: Instead of catching exception, check if table exists programmatically
+             // TODO: Have a DB configurator script what will auto-generate schemas, as long as db is setup.  
+                try
+                {
+                    conn.Open();
+                    conn.Execute(QueryStrings.CreateTableDecade());
+                }
+                catch (NpgsqlException ex)
+                {
+                    Console.WriteLine("Table already exists. Details:" + ex);
+                }
+                conn.Close();
+            }
+        }
+
         public List<Decade> GetAll()
         {
-            var decades = new List<Decade>
-          {
-              new Decade {Year = 1960},
-              new Decade {Year = 1970},
-              new Decade {Year = 1980},
-              new Decade { Year = 1990 },
-          };
-            return decades;
+            using (var conn = new NpgsqlConnection(connectionString))
+            {
+                conn.Open();
+                var allDecade = conn.GetAll<Decade>().ToList();
+                return allDecade;
+            }
+        }
+
+        public Decade Get(int id)
+        {
+            if (id <= 0)
+            {
+                return null;
+            }
+
+            using (var conn = new NpgsqlConnection(connectionString))
+            {
+                conn.Open();
+                var decade = conn.Get<Decade>(id);
+                return decade;
+            }
         }
 
     }
