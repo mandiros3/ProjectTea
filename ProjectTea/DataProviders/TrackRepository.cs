@@ -3,7 +3,6 @@ using ProjectTea.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Services;
 using Npgsql;
 using Dapper;
 using Dapper.Contrib.Extensions;
@@ -40,8 +39,7 @@ namespace ProjectTea.DataProviders
                 conn.Open();
                 var alltracks = conn.GetAll<Track>().ToList();
                 return alltracks;
-            }
-            
+            }   
         }
 
         public Track Create (Track track)
@@ -58,6 +56,7 @@ namespace ProjectTea.DataProviders
                 {
                     //DRY, for open() and close()
                     conn.Open();
+                    
                    //Expecting only a single int row identity, we need the id, for the model to be complete.
                     var trackId = conn.Query<int>(QueryStrings.InsertTrack(), track).Single();
                     track.Id = trackId;
@@ -69,7 +68,5 @@ namespace ProjectTea.DataProviders
             }
             return  track.Id > 0 ? track : null;
         }
-
-
     }
 }

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿
 using Nancy;
 using Nancy.ModelBinding;
+using ProjectTea.DataProviders;
 using ProjectTea.Interfaces;
 using ProjectTea.Models;
 
@@ -11,7 +9,10 @@ namespace ProjectTea.Modules
 {
     public class GenreModule : NancyModule
     {
-        private readonly IGenreRepository _genreRepository;
+        //Leave initialization just to be explicit
+        private readonly IGenreRepository _genreRepository = new GenreRepository();
+
+        //Pass genreRepository as argument, to make it easier for testing.
         public GenreModule(IGenreRepository genreRepository)
         {
             _genreRepository = genreRepository;
@@ -28,11 +29,13 @@ namespace ProjectTea.Modules
                 return Response.AsJson(genreList);
             };
 
-            Post["/tracks"] = args =>
+            Post["/genres"] = args =>
             {
                 var newGenre = this.Bind<Genre>();
-                var createdGenre = _genreRepository.Create(newGenre);
+                var createdGenre = genreRepository.Create(newGenre);
+
                 return createdGenre != null ? Response.AsJson(createdGenre, HttpStatusCode.Created) : HttpStatusCode.InternalServerError;
+
             };
 
         }

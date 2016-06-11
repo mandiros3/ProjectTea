@@ -13,11 +13,11 @@ namespace ProjectTea.DataProviders
     public class GenreRepository : IGenreRepository
     {
         private const string connectionString = "Host=localhost;Username=postgres;Password=codeblocks3;Database=postgres";
-        public GenreRepository ()
+
+        public GenreRepository()
         {
             using (var conn = new NpgsqlConnection(connectionString))
-            {//Todo: Instead of catching exception, check if table exists programmatically
-             //Have a DB configurator script what will auto-generate schemas, as long as db is setup.  
+            {
                 try
                 {
                     conn.Open();
@@ -28,10 +28,7 @@ namespace ProjectTea.DataProviders
                     Console.WriteLine("Table already exists. Details:" + ex);
                 }
                 conn.Close();
-
             }
-
-
         }
 
         public  List<Genre> GetAll()
@@ -46,11 +43,11 @@ namespace ProjectTea.DataProviders
 
         public Genre Create(Genre genre)
         {
-
             if (genre == null)
             {
                 return null;
             }
+
             //No need to close the sql, using will dispose of the object automatically at the end.
             using (var conn = new NpgsqlConnection(connectionString))
             {
@@ -59,8 +56,8 @@ namespace ProjectTea.DataProviders
                     //DRY, for open() and close()
                     conn.Open();
                     //Expecting only a single int row identity, we need the id, for the model to be complete.
-                    var genreId = conn.Query<int>(QueryStrings.InsertGenre(), genre).Single();
-                    genre.Id = genreId;
+                    var trackId = conn.Query<int>(QueryStrings.InsertGenre(), genre).Single();
+                    genre.Id = trackId;
                 }
                 catch (NpgsqlException ex)
                 {

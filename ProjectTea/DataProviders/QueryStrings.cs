@@ -9,8 +9,7 @@ namespace ProjectTea.DataProviders
 
         public static string CreateTableTracks()
         {
-
-            return @"CREATE TABLE IF NOT EXISTS Tracks (
+            var query = @"CREATE TABLE IF NOT EXISTS Tracks (
                  Id serial PRIMARY KEY,
                  Title varchar(50) NOT NULL,
                  Artist varchar(50) NOT NULL,
@@ -19,26 +18,52 @@ namespace ProjectTea.DataProviders
                  MoodId integer,
                  dateCreated timestamp DEFAULT current_timestamp
                 );";
+
+            return query;
         }
 
         public static string CreateTableGenre()
         {
-
-            return @"CREATE TABLE IF NOT EXISTS Genres(
-                          Id serial PRIMARY KEY,
+            var query = @"CREATE TABLE IF NOT EXISTS Genres (
+                          Id serial PRIMARY KEY, 
                           Name varchar(50) NOT NULL,
-                          Description varchar (500) NOT NULL);";
-
+                          Description varchar(500)  
+                          );";
+            return query;
         }
+        public static string CreateTableMood()
+        {
+            var query = @"CREATE TABLE IF NOT EXISTS Moods (
+                          Id serial PRIMARY KEY, 
+                          Name varchar(50) NOT NULL,
+                          Description varchar(500)  
+                          );";
+            return query;
+        }
+        public static string CreateTableDecade()
+        {
+            var query = @"CREATE TABLE IF NOT EXISTS Decades (
+                          Id serial PRIMARY KEY, 
+                          Year varchar(50) NOT NULL,
+                          Description varchar(500)  
+                          );";
+            return query;
+        }
+
+
+
 
         public static string InsertTrack()
         {
-            return @"INSERT INTO tracks (title, artist, genreid, year, moodid) VALUES (@Title, @Artist, @GenreId, @Year, @MoodId) RETURNING Id;";
+            var query = @"INSERT INTO tracks (title, artist, genreid, year, moodid) VALUES (@Title, @Artist, @GenreId, @Year, @MoodId) RETURNING Id;";
+            return query;
         }
 
         public static string InsertGenre()
         {
-            return @"INSERT INTO genres (name, description) VALUES (@Name, @Description) RETURNING Id";
+            var query =
+                @"INSERT INTO genres (name, description) VALUES (@Name, @Description) RETURNING Id;";
+            return query;
         }
 
 
