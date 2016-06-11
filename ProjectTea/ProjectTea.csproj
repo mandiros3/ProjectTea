@@ -139,6 +139,9 @@
     <Content Include="Views\Pages\Home.cshtml" />
     <Content Include="Views\Layouts\AddURL.cshtml" />
     <Content Include="Views\Layouts\Track.cshtml" />
+    <Content Include="Views\Pages\Decade.cshtml" />
+    <Content Include="Views\Pages\Mood.cshtml" />
+    <Content Include="Views\Pages\Genre.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

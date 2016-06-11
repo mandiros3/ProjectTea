@@ -6,7 +6,7 @@ using ProjectTea.Interfaces;
 using ProjectTea.Models;
 
 namespace ProjectTea.Modules
-{
+{//Todo: When I click on a spefic genre, it should perform a query between the id and the tracks that have that id. join()
     public class GenreModule : NancyModule
     {
         //Leave initialization just to be explicit
@@ -26,7 +26,8 @@ namespace ProjectTea.Modules
             {
               var genreList =  _genreRepository.GetAll();
 
-                return Response.AsJson(genreList);
+                //return Response.AsJson(genreList);
+                return View["Views/Pages/Genre", genreList];
             };
 
             Post["/genres"] = args =>

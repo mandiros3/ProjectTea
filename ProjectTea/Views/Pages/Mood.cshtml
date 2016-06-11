@@ -1,0 +1,35 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<System.Collections.Generic.IList<ProjectTea.Models.Mood>>
+
+@{
+
+    Layout = "Views/Layouts/Master.cshtml";
+    ViewBag.Title = "Mood";
+}
+
+
+@if (Model.Count == 0)
+{
+    <p>No mood present</p>
+}
+
+else
+{
+    <article class="col-sm-4">
+
+        <ul>
+
+
+            @foreach (var item in Model)
+
+            {
+                <li class="well">
+                    <h4>@item.Name</h4>
+                    <p>@item.Description</p>
+                </li>
+
+            }
+        </ul>
+
+    </article>
+
+}

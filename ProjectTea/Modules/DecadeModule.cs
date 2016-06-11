@@ -17,7 +17,8 @@ namespace ProjectTea.Modules
             Get["/decade"] = args =>
             {
                 var decadeList = decadeRepository.GetAll();
-                return Response.AsJson(decadeList);
+                //return Response.AsJson(decadeList);
+                return View["Views/Pages/Decade", decadeList];
             };
 
             Get["/decade/{id:int}"] = args =>

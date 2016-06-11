@@ -18,7 +18,8 @@ namespace ProjectTea.Modules
             {
                 var moodList = moodRepository.GetAll();
 
-                return Response.AsJson(moodList);
+                //return Response.AsJson(moodList);
+                return View["Views/Pages/Mood", moodList];
             };
 
             Get["/mood/{id:int}"] = args =>
