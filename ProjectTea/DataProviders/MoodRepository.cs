@@ -9,7 +9,7 @@ using Npgsql;
 
 namespace ProjectTea.DataProviders
 {
-    public class MoodRepository : IMoodRepository
+    public class MoodRepository : IMood
     {
         private const string connectionString = "Host=localhost;Username=postgres;Password=codeblocks3;Database=postgres";
 
@@ -53,9 +53,7 @@ namespace ProjectTea.DataProviders
                 var mood = conn.Get<Mood>(id);
                 return mood;
             }
-            {
-                
-            }
+          
         }
 
       

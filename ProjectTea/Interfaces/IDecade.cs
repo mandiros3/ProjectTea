@@ -6,7 +6,7 @@ namespace ProjectTea.Interfaces
 {
 
     //todo cleanup names
-    public interface IDecadeRepository
+    public interface IDecade
     {
         List<Decade> GetAll();
       

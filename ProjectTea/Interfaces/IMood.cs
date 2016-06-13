@@ -4,7 +4,7 @@ using ProjectTea.Models;
 
 namespace ProjectTea.Interfaces
 {
-    public interface IMoodRepository
+    public interface IMood
     {
         List<Mood> GetAll();
         Mood Get(int id);

@@ -65,6 +65,7 @@ namespace ProjectTea.DataProviders
                 @"INSERT INTO genres (name, description) VALUES (@Name, @Description) RETURNING Id;";
             return query;
         }
+        
 
 
     }

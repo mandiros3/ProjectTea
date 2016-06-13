@@ -10,7 +10,7 @@ using Npgsql;
 
 namespace ProjectTea.DataProviders
 {
-    public class GenreRepository : IGenreRepository
+    public class GenreRepository : IGenre
     {
         private const string connectionString = "Host=localhost;Username=postgres;Password=codeblocks3;Database=postgres";
 
@@ -41,6 +41,20 @@ namespace ProjectTea.DataProviders
             }
         }
 
+        public Genre Get(int id)
+        {
+            if (id <= 0)
+            {
+                return null;
+            }
+            using (var conn = new NpgsqlConnection(connectionString))
+            {
+                conn.Open();
+                var genre = conn.Get<Genre>(id);
+                return genre;
+            }
+        }
+
         public Genre Create(Genre genre)
         {
             if (genre == null)
@@ -66,5 +80,6 @@ namespace ProjectTea.DataProviders
             }
             return genre.Id > 0 ? genre : null;
         }
+
     }
 }

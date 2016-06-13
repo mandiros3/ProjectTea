@@ -8,10 +8,10 @@ namespace ProjectTea.Modules
 {
     public class MainModule : NancyModule
     {
-        private readonly ITrackRepository _trackRepository;
+        private readonly ITrack _trackRepository;
         
         //Todo Refactor Later
-        public MainModule( ITrackRepository trackRepository)
+        public MainModule( ITrack trackRepository)
         {
             _trackRepository = trackRepository;
 

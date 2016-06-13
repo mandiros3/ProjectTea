@@ -10,10 +10,10 @@ namespace ProjectTea.Modules
     public class GenreModule : NancyModule
     {
         //Leave initialization just to be explicit
-        private readonly IGenreRepository _genreRepository = new GenreRepository();
+        private readonly IGenre _genreRepository = new GenreRepository();
 
         //Pass genreRepository as argument, to make it easier for testing.
-        public GenreModule(IGenreRepository genreRepository)
+        public GenreModule(IGenre genreRepository)
         {
             _genreRepository = genreRepository;
 
@@ -25,9 +25,14 @@ namespace ProjectTea.Modules
             Get["/genres"] = args =>
             {
               var genreList =  _genreRepository.GetAll();
-
-                //return Response.AsJson(genreList);
                 return View["Views/Pages/Genre", genreList];
+            };
+
+            Get["/genres/{id:int}"] = args =>
+            {
+               Genre genre = genreRepository.Get(args.id);
+                return genre != null ? Response.AsJson(genre) : HttpStatusCode.NotFound;
+
             };
 
             Post["/genres"] = args =>

@@ -8,9 +8,9 @@ namespace ProjectTea.Modules
 {
     public class DecadeModule : NancyModule
     {
-        private readonly IDecadeRepository decadeRepository = new DecadeRepository();
+        private readonly IDecade decadeRepository = new DecadeRepository();
 
-        public DecadeModule(IDecadeRepository _decadeRepository)
+        public DecadeModule(IDecade _decadeRepository)
         {
             decadeRepository = _decadeRepository;
             //Routes

@@ -8,8 +8,8 @@ namespace ProjectTea.Modules
 {
     public class MoodModule : NancyModule
     {
-        private readonly IMoodRepository moodRepository = new MoodRepository();
-        public MoodModule(IMoodRepository _moodRepository)
+        private readonly IMood moodRepository = new MoodRepository();
+        public MoodModule(IMood _moodRepository)
         {
             moodRepository = _moodRepository;
 

@@ -7,13 +7,13 @@ using ProjectTea.Models;
 
 namespace ProjectTea.Interfaces
 {
-    public interface IGenreRepository
+    public interface IGenre
     {
         List<Genre> GetAll();
         Genre Create(Genre genre);
-        /*
-        Track Get(int id);
         
+        Genre Get(int id);
+        /*
         Task<Track> Update(Track track);
         bool Delete(int id);
         */

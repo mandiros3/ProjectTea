@@ -9,7 +9,7 @@ using Dapper.Contrib.Extensions;
 
 namespace ProjectTea.DataProviders
 {
-    public class TrackRepository : ITrackRepository
+    public class TrackRepository : ITrack
     {
         private const string connectionString = "Host=localhost;Username=postgres;Password=codeblocks3;Database=postgres";
         public TrackRepository()

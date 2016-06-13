@@ -160,10 +160,10 @@
     <Compile Include="DataProviders\MoodRepository.cs" />
     <Compile Include="DataProviders\TrackRepository.cs" />
     <Compile Include="DataProviders\QueryStrings.cs" />
-    <Compile Include="Interfaces\IGenreRepository.cs" />
-    <Compile Include="Interfaces\IDecadeRepository.cs" />
-    <Compile Include="Interfaces\IMoodRepository.cs" />
-    <Compile Include="Interfaces\ITrackRepository.cs" />
+    <Compile Include="Interfaces\IGenre.cs" />
+    <Compile Include="Interfaces\IDecade.cs" />
+    <Compile Include="Interfaces\IMood.cs" />
+    <Compile Include="Interfaces\ITrack.cs" />
     <Compile Include="Models\Decade.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Mood.cs" />

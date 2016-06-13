@@ -3,7 +3,7 @@ using ProjectTea.Models;
 
 namespace ProjectTea.Interfaces
 {
-    public interface ITrackRepository
+    public interface ITrack
     {
         List<Track> GetAll();
         Track Create(Track track);

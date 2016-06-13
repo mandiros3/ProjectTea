@@ -11,9 +11,8 @@ using ProjectTea.Interfaces;
 
 namespace ProjectTea.DataProviders
 {
-    public class DecadeRepository : IDecadeRepository
+    public class DecadeRepository : IDecade
     {
-
         private const string connectionString = "Host=localhost;Username=postgres;Password=codeblocks3;Database=postgres";
 
         public DecadeRepository()
@@ -50,7 +49,7 @@ namespace ProjectTea.DataProviders
             {
                 return null;
             }
-
+            
             using (var conn = new NpgsqlConnection(connectionString))
             {
                 conn.Open();
