@@ -5,7 +5,6 @@ using System.Linq;
 using Dapper;
 using Dapper.Contrib.Extensions;
 using Npgsql;
-using ProjectTea.DataProviders;
 using ProjectTea.Models;
 using ProjectTea.Interfaces;
 
